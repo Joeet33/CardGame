@@ -43,6 +43,10 @@ dealer.append(deck.pop())
 while True:
     os.system('cls' if os.name == 'nt' else 'clear')
 
+    player_score = calc_hand(player)
+    dealer_score = calc_hand(dealer)
+
     print('Dealer Cards: [{}][?]'.format(dealer[0]))
-    print('Your Cards [{}] ({})'.format(']['.join(player), 000000))
+    print('Your Cards [{}] ({})'.format(']['.join(player), player_score))
+
     break
