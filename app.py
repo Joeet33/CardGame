@@ -1,6 +1,8 @@
 import os
 import random
 
+
+# Sorting out JQK + A's
 def calc_hand(hand):
     non_aces = [c for c in hand if c != 'A']
     aces = [c for c in hand if c == 'A']
@@ -21,37 +23,46 @@ def calc_hand(hand):
 
     return sum
 
-while True:
-    deck = [
-        '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A',]*4
 
+# The cards in the deck
+while True:
+    deck = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A', ] * 4
+
+    # Randomises/shuffling cards
     random.shuffle(deck)
 
+    # Player 1 + computer
     dealer = []
     player = []
 
+    # Dealing cards
     player.append(deck.pop())
     dealer.append(deck.pop())
     player.append(deck.pop())
     dealer.append(deck.pop())
 
+# Stating first deal (important for blackjack)
     first_hand = True
+
+# Player yet too stick
     sticking = False
 
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
 
+        # Value of player + computers hands
         player_score = calc_hand(player)
         dealer_score = calc_hand(dealer)
 
         if sticking:
             print('Dealer Cards: [{}] ({})'.format(']['.join(dealer), dealer_score))
+        # Hiding dealers second card
         else:
             print('Dealer Cards: [{}][?]'.format(dealer[0]))
+        # Showing both players cards
+        print('Your Cards:   [{}] ({})\n'.format(']['.join(player), player_score))
 
-        print('Your Cards:   [{}] ({})'.format(']['.join(player), player_score))
-        print('')
-
+        # Game outcomes
         if sticking:
             if dealer_score > 21:
                 print('Dealer busted, you win!')
@@ -74,17 +85,23 @@ while True:
             input('Play again? Hit enter to continue')
             break
 
+        # Option to stick or twist
         print('What would you like to do?')
         print(' [1] Stick')
         print(' [2] Twist\n')
         choice = input('Your choice: ')
 
-
+# Showing it's not players first hand
         first_hand = False
 
+# Sticking if input = 1
         if choice == '1':
             sticking = True
-            while calc_hand(dealer) <= 16:
+
+# Keep going until dealer gets <= 15
+            while calc_hand(dealer) <= 15:
                 dealer.append(deck.pop())
+
+# Or twist again if input = 2
         elif choice == '2':
             player.append(deck.pop())
