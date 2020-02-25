@@ -32,7 +32,7 @@ print('You now have: {}\n'.format(total_chips))
 # If player wins 'placed_bet' will double + original 'placed_bet' will be added back to 'amount_of_chips'. Giving a new 'total_chips'
 
 winnings = (placed_bet * 2)
-winning_total = (winnings + placed_bet)
+winning_total = (winnings + amount_of_chips)
 
 losing_total = (amount_of_chips - placed_bet)
 
