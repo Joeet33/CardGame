@@ -27,14 +27,13 @@ while True:
 # A deduction from players total chips of the total bet
 total_chips = (amount_of_chips - placed_bet)
 
+losing_total = (amount_of_chips - placed_bet)
+
 print('You now have: {}\n'.format(total_chips))
 
 # If player wins 'placed_bet' will double + original 'placed_bet' will be added back to 'amount_of_chips'. Giving a new 'total_chips'
 
-winnings = (placed_bet * 2)
-winning_total = (winnings + amount_of_chips)
-
-losing_total = (amount_of_chips - placed_bet)
+total_chips = ((placed_bet * 2)+amount_of_chips)
 
 # Sorting out JQK + A's
 def calc_hand(hand):
@@ -100,13 +99,13 @@ while True:
         if sticking:
             if dealer_score > 21:
                 print('Dealer busted, you win!\n')
-                print('You now have: {}'.format(winning_total))
+                print('You now have: {}'.format(total_chips))
             elif player_score == dealer_score:
                 print('Draw, no winner!')
                 print('You now have: {}'.format(losing_total))
             elif player_score > dealer_score:
                 print('You beat the dealer, you win!')
-                print('You now have: {}'.format(winning_total))
+                print('You now have: {}'.format(total_chips))
             else:
                 print('You lose\n')
                 print('You now have: {}\n'.format(losing_total))
@@ -115,7 +114,7 @@ while True:
 
         if first_hand and player_score == 21:
             print('Blackjack!\n')
-            print('You now have: {}\n'.format(winning_total))
+            print('You now have: {}\n'.format(total_chips))
             input('Play again? Hit enter to continue')
             break
 
