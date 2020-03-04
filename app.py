@@ -1,6 +1,11 @@
 import os
 import random
 
+# Amount of chips player has
+starting_chips = 1000
+total_chips = starting_chips
+
+
 # Sorting out JQK + A's
 def calc_hand(hand):
     non_aces = [c for c in hand if c != 'A']
@@ -46,13 +51,13 @@ while True:
 # Player yet too stick
     sticking = False
 
+
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
 
-        # Amount of chips player has
-        starting_chips = 1000
 
-        print('Player 1 has {}\n'.format(starting_chips))
+
+        print('Player 1 has {}\n'.format(total_chips))
 
         # Amount of chips player wants to bet
         try:
@@ -62,22 +67,23 @@ while True:
             continue
         print('')
 
-        if placed_bet > 1000:
+        if placed_bet > starting_chips:
             print("You don't have enough funds")
             continue
         else:
             break
 
     # A deduction from players total chips of the total bet
-    total_chips = (starting_chips - placed_bet)
+    total_chips = (total_chips - placed_bet)
 
-    losing_total = (starting_chips - placed_bet)
+    losing_total = (total_chips - placed_bet)
 
     print('You now have: {}\n'.format(total_chips))
 
-    # If player wins 'placed_bet' will double + original 'placed_bet' will be added back to 'amount_of_chips'. Giving a new 'total_chips'
+    # If player wins
 
-    total_chips = ((placed_bet * 2) + starting_chips)
+    total_chips = ((placed_bet * 2) + total_chips)
+
     while True:
     # Value of player + computers hands
             player_score = calc_hand(player)
