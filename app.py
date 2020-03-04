@@ -1,40 +1,6 @@
 import os
 import random
 
-
-# Amount of chips player has
-amount_of_chips = 10000
-
-
-print('Player 1 has {}\n'.format(amount_of_chips))
-
-
-# Amount of chips player wants to bet
-while True:
-    try:
-        placed_bet = int(input('Place your bet: '))
-    except ValueError:
-        print("Sorry, I didn't understand that.")
-        continue
-    print('')
-
-    if placed_bet > 10000:
-        print("You don't have enough funds")
-        continue
-    else:
-        break
-
-# A deduction from players total chips of the total bet
-total_chips = (amount_of_chips - placed_bet)
-
-losing_total = (amount_of_chips - placed_bet)
-
-print('You now have: {}\n'.format(total_chips))
-
-# If player wins 'placed_bet' will double + original 'placed_bet' will be added back to 'amount_of_chips'. Giving a new 'total_chips'
-
-total_chips = ((placed_bet * 2)+amount_of_chips)
-
 # Sorting out JQK + A's
 def calc_hand(hand):
     non_aces = [c for c in hand if c != 'A']
@@ -82,6 +48,37 @@ while True:
 
     while True:
         os.system('cls' if os.name == 'nt' else 'clear')
+
+        # Amount of chips player has
+        amount_of_chips = 1000
+
+        print('Player 1 has {}\n'.format(amount_of_chips))
+
+        # Amount of chips player wants to bet
+        while True:
+            try:
+                placed_bet = int(input('Place your bet: '))
+            except ValueError:
+                print("Sorry, I didn't understand that.")
+                continue
+            print('')
+
+            if placed_bet > 1000:
+                print("You don't have enough funds")
+                continue
+            else:
+                break
+
+        # A deduction from players total chips of the total bet
+        total_chips = (amount_of_chips - placed_bet)
+
+        losing_total = (amount_of_chips - placed_bet)
+
+        print('You now have: {}\n'.format(total_chips))
+
+        # If player wins 'placed_bet' will double + original 'placed_bet' will be added back to 'amount_of_chips'. Giving a new 'total_chips'
+
+        total_chips = ((placed_bet * 2) + amount_of_chips)
 
 # Value of player + computers hands
         player_score = calc_hand(player)
