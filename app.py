@@ -67,22 +67,18 @@ while True:
             continue
         print('')
 
-        if placed_bet > starting_chips:
+        if placed_bet > total_chips:
             print("You don't have enough funds")
             continue
         else:
             break
 
     # A deduction from players total chips of the total bet
-    total_chips = (total_chips - placed_bet)
 
-    losing_total = (total_chips - placed_bet)
 
     print('You now have: {}\n'.format(total_chips))
 
     # If player wins
-
-    total_chips = ((placed_bet * 2) + total_chips)
 
     while True:
     # Value of player + computers hands
@@ -100,29 +96,35 @@ while True:
     # Game outcomes
             if sticking:
                 if dealer_score > 21:
+                    total_chips = ((placed_bet * 2) + total_chips)
                     print('Dealer busted, you win!\n')
                     print('You now have: {}'.format(total_chips))
                 elif player_score == dealer_score:
+                    total_chips = (total_chips - placed_bet)
                     print('Draw, no winner!')
-                    print('You now have: {}'.format(losing_total))
+                    print('You now have: {}'.format(total_chips))
                 elif player_score > dealer_score:
+                    total_chips = ((placed_bet * 2) + total_chips)
                     print('You beat the dealer, you win!')
                     print('You now have: {}'.format(total_chips))
                 else:
+                    total_chips = (total_chips - placed_bet)
                     print('You lose\n')
-                    print('You now have: {}\n'.format(losing_total))
+                    print('You now have: {}\n'.format(total_chips))
                 input('Play again? Hit enter to continue')
                 break
 
             if first_hand and player_score == 21:
+                total_chips = ((placed_bet * 2) + total_chips)
                 print('Blackjack!\n')
                 print('You now have: {}\n'.format(total_chips))
                 input('Play again? Hit enter to continue')
                 break
 
             if player_score > 21:
+                total_chips = (total_chips - placed_bet)
                 print('You bust!\n')
-                print('You now have: {}\n'.format(losing_total))
+                print('You now have: {}\n'.format(total_chips))
                 input('Play again? Hit enter to continue')
                 break
 
