@@ -73,9 +73,6 @@ while True:
         else:
             break
 
-    # A deduction from players total chips of the total bet
-
-
     print('You now have: {}\n'.format(total_chips))
 
     # If player wins
@@ -96,6 +93,7 @@ while True:
     # Game outcomes
             if sticking:
                 if dealer_score > 21:
+                    total_chips = (total_chips - placed_bet)
                     total_chips = ((placed_bet * 2) + total_chips)
                     print('Dealer busted, you win!\n')
                     print('You now have: {}'.format(total_chips))
@@ -104,6 +102,7 @@ while True:
                     print('Draw, no winner!')
                     print('You now have: {}'.format(total_chips))
                 elif player_score > dealer_score:
+                    total_chips = (total_chips - placed_bet)
                     total_chips = ((placed_bet * 2) + total_chips)
                     print('You beat the dealer, you win!')
                     print('You now have: {}'.format(total_chips))
@@ -115,6 +114,7 @@ while True:
                 break
 
             if first_hand and player_score == 21:
+                total_chips = (total_chips - placed_bet)
                 total_chips = ((placed_bet * 2) + total_chips)
                 print('Blackjack!\n')
                 print('You now have: {}\n'.format(total_chips))
