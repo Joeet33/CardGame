@@ -73,7 +73,7 @@ while True:
         else:
             break
 
-    print('You now have: {}\n'.format(total_chips))
+    print('You now have: {}\n'.format(total_chips - placed_bet))
 
     # If player wins
 
